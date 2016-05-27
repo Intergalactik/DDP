@@ -1,0 +1,12 @@
+<span ng-hide="attrs.id">
+    <a class="btn btn-primary" ng-disabled="true" ng-transclude></a>
+</span>
+
+<span ng-show="attrs.id">
+    <span ng-show="!inCart()">
+        <a class="btn btn-default" ng-click="ngCart.addItem(id, name, price, size, q, data)" ng-transclude></a>
+    </span>
+    <mark ng-show="inCart()">
+        <a class="btn btn-default glyphicon glyphicon-ok" ng-click="ngCart.removeItemById(id)"></a>
+    </mark>
+</span>

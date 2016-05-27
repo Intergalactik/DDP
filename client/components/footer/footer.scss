@@ -1,0 +1,27 @@
+footer.footer {
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 70px;
+  border-top: 1px solid #E5E5E5;
+}
+
+
+.footer ul li {
+    padding: 20px 20px;
+	display: inline-block;
+}
+
+.footer ul li a {
+	color: #333333;
+}
+
+.footer ul li a:hover {
+	text-decoration: none;
+	color: #999999;
+}
+
+.footer ul.unstyled {
+	list-style: none;
+}
+
+

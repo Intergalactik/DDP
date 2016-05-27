@@ -1,0 +1,16 @@
+<navbar></navbar>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <img src="assets/images/logo.png" alt="Dama De Pica" style="max-width: 300px; padding-top: 50px;">
+  </div>
+</header>
+
+<div class="container">
+	<h1>Create new Product</h1>
+	<form class="form-horizontal" role="form" ng-submit="addProduct()">
+		<div ng-include="'app/products/templates/_product_form.html'"></div>
+	</form>
+</div>
+
+<footer></footer>

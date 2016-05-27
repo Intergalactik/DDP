@@ -1,0 +1,43 @@
+<navbar></navbar>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <img src="assets/images/logo.png" alt="Dama De Pica" style="max-width: 300px; padding-top: 50px;">
+  </div>
+</header>
+
+<div class="container">
+	<div class="row">
+		<h1>Cart</h1>
+		<ngcart-cart template-url="components/ngcart/cart.html"></ngcart-cart>
+	</div>
+
+	<div class="row">
+		<h1>Choose a payment method</h1>
+		<p class="help-block">{{errors}}</p><br>
+		<div class="col-md-6">
+			<!-- <form>
+				<braintree-dropin options="paymentOptions">Loading...</braintree-dropin>
+				<input type="submit" value="Purchase" />
+			</form> -->
+			 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" ng-show="ngCart.getTotalItems()">
+        <input name="cmd" value="_xclick" />
+        <input  name="business" value="{{ settings.paypal.business }}" />
+        <input  name="lc" value="CA" />
+        <input  name="item_name" value="{{ settings.paypal.item_name }}" />
+        <input  name="item_number" value="{{ settings.paypal.item_number }}" />
+        <input  name="amount" value="{{ ngCart.getSubTotal()}}" />
+        <input type="hidden" name="currency_code" value="{{ settings.paypal.currency_code }}" />
+        <input type="hidden" name="button_subtype" value="services" />
+        <input type="hidden" name="no_note" value="{{ settings.paypal.no_note }}" />
+        <input type="hidden" name="tax_rate" value="{{ ngCart.getTaxRate()}}" />
+        <input type="hidden" name="shipping" value="{{ ngCart.getShipping()}}" />
+        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+    </form>
+		</div>
+	</div>
+</div>
+
+<footer></footer>

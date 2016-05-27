@@ -1,0 +1,68 @@
+<navbar></navbar>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <img src="assets/images/logo.png" alt="Dama De Pica" style="max-width: 300px; padding-top: 50px;">
+  </div>
+</header>
+
+<div class="container">
+    <main>
+      <h1><small>SEND A MESSAGE</small></h1>
+
+      <!-- FORM -->
+      <form class="form-horizontal" name="contactForm" novalidate>
+        <div class="form-group">
+          <label for="name" class="control-label col-sm-2">Name:</label>
+          <div class="col-sm-4">
+             <input type="text" class="form-control" name="name" ng-model="contact.name" placeholder="What is your name?" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="control-label col-sm-2">Email:</label>
+          <div class="col-sm-4">
+            <input type="email" class="form-control" name="email" ng-model="contact.email" placeholder="Enter a valid email address" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="subject" class="control-label col-sm-2">Subject:</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" name="subject" ng-model="contact.subject" placeholder="Subject" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message" class="control-label col-sm-2">Message:</label>
+          <div class="col-sm-4">
+            <textarea name="message" class="form-control" rows="4" ng-model="contact.message" placeholder="What's on your mind?" required>{{message}}</textarea>
+          </div>
+        </div>
+        <div class="col-sm-2 col-sm-offset-1">
+          <button class="btn btn-default" type="submit" ng-click="postMail(contact)">Send</button>
+        </div>
+      </form>
+
+
+      <!--CONTACT -->
+
+      <h1 id="contact"><small>CONTACT</small></h1><hr>
+        <div class="contact">
+          <a href="mailto:hello@damadepica.com">
+            <i class="fa fa-envelope fa-3x"></i><br>
+            <small>hello@damadepica.com</small>
+          </a>
+
+          <a href="tel:+40700000000">
+            <i class="fa fa-mobile fa-3x"></i><br>
+            <small>+(40)700.000.000</small>
+          </a>
+
+          <a href="https://www.facebook.com/damahainepictatemanual" target="_blank">
+            <i class="fa fa-facebook-official fa-3x"></i><br>
+            <small>Like my page</small>
+          </a>
+        </div>
+
+    </main>
+  </div>
+
+  <footer></footer>
