@@ -63,7 +63,7 @@ User.find({}).removeAsync()
     }, {
       title: 'Product 2',
       imageUrl: '/assets/uploads/image_2.jpg',
-      price: .30,
+      price: 0.30,
       size: 'M',
       stock: 1,
       categories: [shirt],

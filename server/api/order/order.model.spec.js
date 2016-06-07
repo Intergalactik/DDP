@@ -11,8 +11,8 @@ describe('Order', function() {
 	describe('#create', function() {
 		var products,
 		    products_attributes = [
-		      {title: 'Product 1', price: 111.11 },
-		      {title: 'Product 2', price: 2222.22 },
+		      {title: 'Product 1', price: 111.11, size: 'S' },
+		      {title: 'Product 2', price: 2222.22, size: 'S' },
 		    ],
 		    user = new User({
 		    	provider: 'local',
@@ -25,7 +25,7 @@ describe('Order', function() {
 			Product.create(products_attributes, function(err, data) {
 				if(err) {
 					return done(err);
-				};
+				}
 				products = data;
 				return user.save();
 			}).then(function() {
@@ -35,7 +35,7 @@ describe('Order', function() {
 
 		it('should create an order with valid attributes', function(done) {
 			var attributes = {
-				products: products.map(function(p){ return p._id; }),
+				items: products.map(function(p){ return p._id; }),
 				user: user._id,
 				total: products.reduce(function(p, c) { return p.price + c.price ; }),
 			};
@@ -43,8 +43,8 @@ describe('Order', function() {
 			Order.create(attributes).then(function(results) {
 				return Order.findOne({}).populate(['products', 'user']);
 			}).then(function(order) {
-				order.products.length.should.be.equal(2);
-				order.total.should.be.equal(111.11+2222.22);
+				order.items.length.should.be.equal(2);
+				order.total.should.be.equal('2333.3');
 				order.shipping.should.be.equal(0.0);
 				order.tax.should.be.equal(0.0);
 				order.discount.should.be.equal(0.0);

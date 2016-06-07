@@ -19,6 +19,29 @@ var transporter = nodemailer.createTransport({
   }
 });
 
+
+// var auth = {
+//   auth: {
+//     api_key: 'key-56b0dcc70e931b67dceed300d35d8881',
+//     domain: 'sandbox54280b478fe1402a94b71dc1e59c37b9.mailgun.org'
+//   }
+// };
+
+// var transporter = nodemailer.createTransport(mg(auth)
+// {
+
+
+  // service: 'Mailgun',
+  // auth: {
+  //   domain: 'sandbox54280b478fe1402a94b71dc1e59c37b9.mailgun.org',
+  //   api_key: 'key-56b0dcc70e931b67dceed300d35d8881',
+    // user: 'postmaster@sandbox54280b478fe1402a94b71dc1e59c37b9.mailgun.org',    // your email here
+    // pass: '00daff8b754083f6e1db73e8c137cde7'          // your password here
+  // }
+// }
+// );
+
+
 exports.send = function(req,res){
   var htmlContent = '<p>Name: ' + req.body.name + '</p>' +
                     '<p>Email: ' + req.body.email + '</p>' +
@@ -35,7 +58,7 @@ exports.send = function(req,res){
       console.log(err);
     }else{
       console.log('Message sent: ' + info.response);
-      return res.json(201, info);
+      return res.status(201).json(info);
     }
   });
 

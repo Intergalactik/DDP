@@ -10,7 +10,7 @@ describe('Controller: ProductsCtrl', function () {
 
   beforeEach(module('meanshopApp'));
 
-  beforeEach(inject(function ($rootScope, _Product_/*, $state*/) {
+  beforeEach(inject(function ($rootScope, _Product_/*, $state*/, sinon) {
     scope = $rootScope.$new();
     mockProduct = validAttributes[0];
     Product = _Product_;
@@ -47,14 +47,14 @@ describe('Controller: ProductsCtrl', function () {
       expect(scope.product).to.eql(mockProduct);
     });
 
-    it('should remove product and redirect if succeded', function() {
+    it('should remove product and redirect if succeded', function(sinon, assert) {
       var stub = sinon.stub(Product, 'delete', callCallbackWithError());
       scope.deleteProduct();
       state.go.should.have.been.calledWith('products');
       assert(stub.withArgs({id: mockProduct._id}).calledOnce);
     });
 
-    it('should not redirect if an error occurs', function() {
+    it('should not redirect if an error occurs', function(sinon) {
       sinon.stub(Product, 'delete', callCallbackWithError(true));
       scope.deleteProduct();
       expect(state.go.calledOnce).to.equal(false);
@@ -70,7 +70,7 @@ describe('Controller: ProductsCtrl', function () {
       });
     }));
 
-    it('should create a new product and redirect to products', function() {
+    it('should create a new product and redirect to products', function(sinon, assert) {
       var stub = sinon.stub(Product, 'save', callCallbackWithError(false));
       scope.product = mockProduct;
       scope.addProduct();
@@ -78,7 +78,7 @@ describe('Controller: ProductsCtrl', function () {
       state.go.should.have.been.calledWith('viewProduct', {id: mockProduct._id});
     });
 
-    it('should not redirect if save fails', function() {
+    it('should not redirect if save fails', function(sinon) {
       sinon.stub(Product, 'save', callCallbackWithError(true));
       scope.product = mockProduct;
       scope.addProduct();
@@ -101,14 +101,14 @@ describe('Controller: ProductsCtrl', function () {
       expect(scope.product).to.equal(mockProduct);
     });
 
-    it('should edit product and redirect to view if success', function() {
+    it('should edit product and redirect to view if success', function(sinon, assert) {
       var stub = sinon.stub(Product, 'update', callCallbackWithError(false));
       scope.editProduct();
       assert(stub.withArgs({id: mockProduct._id}).calledOnce);
       state.go.should.have.been.calledWith('viewProduct', {id: mockProduct._id});
     });
 
-    it('should not redirect if failed', function() {
+    it('should not redirect if failed', function(sinon) {
       sinon.stub(Product, 'update', callCallbackWithError(true, mockProduct));
       scope.editProduct();
       expect(state.go.calledOnce).to.equal(false);

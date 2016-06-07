@@ -26,6 +26,7 @@
     "mongoose-url-slugs": "^0.1.4",
     "morgan": "~1.0.0",
     "nodemailer": "^2.4.2",
+    "nodemailer-mailgun-transport": "git+https://github.com/orliesaurus/nodemailer-mailgun-transport.git",
     "nodemailer-smtp-transport": "^2.5.0",
     "passport": "~0.2.0",
     "passport-local": "~0.1.6",

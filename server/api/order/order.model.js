@@ -41,7 +41,7 @@ var OrderSchema = new Schema({
 OrderSchema.pre('validate', function(next) {
 	if(!this.nonce) {
 		next();
-	};
+	}
 	executePayment(this, function(err, result) {
 		this.paymentStatus = result;
 		if(err || !result.success) {

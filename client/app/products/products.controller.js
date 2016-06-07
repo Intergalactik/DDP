@@ -34,7 +34,7 @@ angular.module('meanshopApp')
   	};
   })
 
-  .controller('ProductNewCtrl', function($scope, $state, Products, Upload, $timeout) {
+  .controller('ProductNewCtrl', function($scope, $state, Products /*, $timeout*/) {
   	$scope.product = {}; // create a new instance
   	$scope.addProduct = function(){
       return Products.save($scope.product).$promise.then(function (product) {

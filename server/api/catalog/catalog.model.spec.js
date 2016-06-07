@@ -37,7 +37,7 @@ describe('Product+Catalog', function() {
   });
 
   it('should create a product with book catetory', function(done) {
-    Product.create({title: 'Broccoli', price: 123, categories: [books._id]})
+    Product.create({title: 'Broccoli', size: '1', price: 123, categories: [books._id]})
       .then(function () {
         return Product.findOne({}).populate(['categories', 'categories.parent']);
       })
@@ -93,36 +93,42 @@ describe('Finding products by category', function () {
         return Product.create({
           title : 'GoPro HERO4 SILVER',
           price : 399.99,
+          size: '1',
           stock : 200,
           categories : [electronics],
           description : 'GoPro’s high-end camera model that features a new design with an integrated LCD, significantly increasing ease of use.'
         }, {
           title : 'Building an E-Commerce Application with MEAN',
           price : 23.99,
+          size: '1',
           stock : 950,
           categories : [books],
           description : 'Build an state-of-the-art using the MEAN stack (MongoDB, ExpressJS, AngularJS and NodeJS)'
         }, {
           title : 'Ray-Ban RB2132 Sunglasses',
           price : 146.99,
+          size: '1',
           stock : 10,
           categories : [clothing],
           description : 'Plastic imported Ray-Ban RB2132 New Wayfarer Sunglasses'
         }, {
           title : 'PlayStation 4 Console',
           price : 399.95,
+          size: '1',
           stock : 100,
           categories : [electronics],
           description : 'The PlayStation 4 system opens the door to an incredible journey through immersive new gaming worlds and a deeply connected gaming community. PS4 puts gamers first with an astounding launch lineup and over 180 games in development. Play amazing top-tier blockbusters and innovative indie hits on PS4. Developer Inspired, Gamer Focused.'
         }, {
           title : 'Toyota Corolla 2014',
           price : 16493,
+          size: '1',
           stock : 1,
           categories : [vehicle],
           description : 'ECO 38 MPG , CLEAN CARFAX , ONE OWNERS LOW MILEGE , LE POWER PACK , BACK UP CAMERA , BLUETOOTH , AUTOMATIC CLIMATE CONTROL , NONSMOKER , VERY CLEAN IN AND OUT , COMES WITH 2 KEYS , BOOKS , SERVICE RECORDS , 3YR / 36K FULL TOYOTA WARRANTY & FREE OIL CHANGES'
         }, {
           title : 'iPad Air 2 Wi-Fi 16GB - Silver',
           price : 499,
+          size: '1',
           stock : 15,
           categories : [electronics],
           description : 'The power and portability of iPad unlock possibilities that will change the way you do the things you love. '

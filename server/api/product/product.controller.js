@@ -119,7 +119,7 @@ exports.upload = function(req, res) {
   var file = req.files.file;
   if(!file) {
     return handleError(res)('File not provided');
-  };
+  }
 
   Product.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
@@ -157,7 +157,7 @@ exports.search = function(req, res) {
     .exec(function (err, products) {
       if(err) {
         return handleError(res, err);
-      };
+      }
       return res.json(200, products);
     });
 };
