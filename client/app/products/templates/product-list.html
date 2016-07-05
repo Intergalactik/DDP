@@ -1,10 +1,6 @@
 <navbar></navbar>
 
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <img src="assets/images/logo.png" alt="Dama De Pica" style="max-width: 300px; padding-top: 50px;">
-  </div>
-</header>
+<header></header>
 
 <div class="container">
   <div class="row">
@@ -22,18 +18,16 @@
   <div class="row">
     <!-- <div class="col-md-3" ng-include="'components/sidebar/sidebar.html'"></div> -->
     <div class="col-md-3" ng-show="products.length < 1"> No products to show.</div>
-    <div class="col-md-3" ng-repeat="product in products | filter: -createdAt">
-
+    <div class="col-md-3" ng-repeat="product in products | orderBy:'-createdAt'">
       <div class="thumbnail productbox">
         <div class="productdescription">
           <a ui-sref="viewProduct({id: product._id})">
             <img src="{{product.imageUrl}}" alt="{{product.title}}" class="img-responsive">
             <div class="producttitle">{{product.title}}</div>
           </a>
-
+          <p><strong>Size: </strong>{{product.size}}</p>
           <p>{{product.description}}</p>
         </div>
-
         <div class="productprice">
           <div class="pull-right">
             <ngcart-addtocart id="{{product._id}}" name="{{product.title}}" price="{{product.price}}" template-url="components/ngcart/addtocart.html" data="product"><i class="glyphicon glyphicon-shopping-cart"></i></ngcart-addtocart>
@@ -41,7 +35,6 @@
           <div class="pricetext">{{product.price}} <small>lei</small></div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

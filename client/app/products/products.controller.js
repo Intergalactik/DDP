@@ -62,25 +62,40 @@ angular.module('meanshopApp')
 
   .constant('clientTokenPath', '/api/braintree/client_token')
 
-  .controller('ProductCheckoutCtrl', function($scope, $http, $state, ngCart) {
+  .controller('ProductCheckoutCtrl', function($scope, $window, $http, $state, ngCart) {
     $scope.errors = '';
 
     ngCart.setShipping(0.1);
 
-    $scope.paymentOptions = {
-      onPaymentMethodReceived: function(payload) {
-        angular.merge(payload, ngCart.toObject());
-        payload.total = payload.totalCost;
-        console.error(payload);
-        $http.post('api/orders', payload) 
-        .then(function success() {
+    $scope.formData = {};
+    $scope.productData = ngCart.toObject();
+    $scope.checkoutData = angular.merge($scope.formData, $scope.productData);
+
+    $scope.submitOrder = function(checkoutData) {
+      if($scope.formData.$invalid === true) {
+      return;
+    }
+
+    if($scope.formData.email === $scope.formData.emailConfirm) {
+      $http.post('/api/orders', angular.copy(checkoutData))
+        .success(function(/*data*/) {
+          // Show success message
+          console.log(checkoutData);
+
+          $scope.formData = {};
           ngCart.empty(true);
           $state.go('products');
-        }, function error(res) {
-          $scope.errors = res;
+        })
+        .error(function(/*data*/) {
+          // Show error message
         });
+      } else { 
+        alert('Please confirm your email!');
+        return;
       }
+    
     };
+       
   });
 
   errorHandler = function($scope) {
