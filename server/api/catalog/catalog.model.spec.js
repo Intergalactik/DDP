@@ -96,7 +96,7 @@ describe('Finding products by category', function () {
           size: '1',
           stock : 200,
           categories : [electronics],
-          description : 'GoPro’s high-end camera model that features a new design with an integrated LCD, significantly increasing ease of use.'
+          description : 'GoPros high-end camera model that features a new design with an integrated LCD, significantly increasing ease of use.'
         }, {
           title : 'Building an E-Commerce Application with MEAN',
           price : 23.99,

@@ -25,16 +25,16 @@ angular.module('meanshopApp')
 
     $scope.showProduct = function(product){
       $state.go('viewProduct', {id: product._id});
-    }
+    };
 
     $scope.editProduct = function(product){
       $state.go('editProduct', {id: product._id});
-    }
+    };
 
     $scope.deleteProduct = function(product){
       Products.remove({ id: product._id });
       $scope.products.splice(this.$index, 1);
-    }
+    };
   
 
   });

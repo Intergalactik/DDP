@@ -90,7 +90,7 @@ angular.module('meanshopApp')
           // Show error message
         });
       } else { 
-        alert('Please confirm your email!');
+        console.log('Please confirm your email!');
         return;
       }
     

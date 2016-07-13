@@ -1,6 +1,6 @@
 'use strict';
 
-var app = require('../../app');
+var app = require('../..');
 var request = require('supertest');
 
 var newCatalog;
@@ -25,7 +25,7 @@ describe('Catalog API:', function() {
     });
 
     it('should respond with JSON array', function() {
-      catalogs.should.be.instanceOf(Array);
+      expect(catalogs).to.be.instanceOf(Array);
     });
 
   });
@@ -36,7 +36,6 @@ describe('Catalog API:', function() {
         .post('/api/catalogs')
         .send({
           name: 'New Catalog',
-          info: 'This is the brand new catalog!!!'
         })
         .expect(201)
         .expect('Content-Type', /json/)
@@ -50,8 +49,7 @@ describe('Catalog API:', function() {
     });
 
     it('should respond with the newly created catalog', function() {
-      newCatalog.name.should.equal('New Catalog');
-      newCatalog.info.should.equal('This is the brand new catalog!!!');
+      expect(newCatalog.name).to.equal('New Catalog');
     });
 
   });
@@ -78,8 +76,7 @@ describe('Catalog API:', function() {
     });
 
     it('should respond with the requested catalog', function() {
-      catalog.name.should.equal('New Catalog');
-      catalog.info.should.equal('This is the brand new catalog!!!');
+      expect(catalog.name).to.equal('New Catalog');
     });
 
   });
@@ -92,7 +89,6 @@ describe('Catalog API:', function() {
         .put('/api/catalogs/' + newCatalog._id)
         .send({
           name: 'Updated Catalog',
-          info: 'This is the updated catalog!!!'
         })
         .expect(200)
         .expect('Content-Type', /json/)
@@ -110,8 +106,7 @@ describe('Catalog API:', function() {
     });
 
     it('should respond with the updated catalog', function() {
-      updatedCatalog.name.should.equal('Updated Catalog');
-      updatedCatalog.info.should.equal('This is the updated catalog!!!');
+      expect(updatedCatalog.name).to.equal('Updated Catalog');
     });
 
   });
