@@ -7,74 +7,71 @@
 		<h1>Cart</h1>
 		<ngcart-cart template-url="components/ngcart/cart.html"></ngcart-cart>
 
-        <div class="orderDetails">
-    <h1>Customer Details</h1>
+        <div class="orderDetails" ng-show="totalItems > 0">
+            <h1>Customer Details</h1>
 
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label for="name" class="col-sm-2 control-label">Name</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control" ng-model="formData.name" id="name" placeholder="Your Full Name" required="">
-            </div>
-             
-        </div>
-       
-        <div class="form-group">
-            <label for="shippingAddress" class="col-sm-2 control-label">Address</label>
-            <div class="col-sm-5">
-                <textarea rows="2" class="form-control" ng-model="formData.shippingAddress" id="shippgingAddress" placeholder="Enter the Address for Delivery" required=""></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="city" class="col-sm-2 control-label">City</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control" ng-model="formData.city" id="city" placeholder="City" required="">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="region" class="col-sm-2 control-label">Region/Province</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control" ng-model="formData.region" id="region" placeholder="Region/Province" required="">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="country" class="col-sm-2 control-label">Country</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control" ng-model="formData.country" id="country" placeholder="Country" required="">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="phone" class="col-sm-2 control-label">Phone Number</label>
-            <div class="col-sm-5">
-                <input type="tel" class="form-control" ng-model="formData.phone" id="phone" placeholder="Phone Number" required="">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="email" class="col-sm-2 control-label">Email</label>
-            <div class="col-sm-5">
-                <input type="email" class="form-control" ng-model="formData.email" id="email" placeholder="email@example.com" required="">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="emailVerify" class="col-sm-2 control-label">Confirm Email</label>
-            <div class="col-sm-5">
-                <input type="email" class="form-control" ng-model="formData.emailConfirm" id="emailConfirm" placeholder="email@example.com" required="">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-4 col-sm-offset-1">
-                <i>*Please fill in all the fields to complete the order</i> 
-            </div>
-        </div>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" ng-model="formData.name" id="name" maxlength="50" placeholder="Your Full Name" required="">
+                    </div>
+                     
+                </div>
+               
+                <div class="form-group">
+                    <label for="shippingAddress" class="col-sm-2 control-label">Address</label>
+                    <div class="col-sm-5">
+                        <textarea rows="2" class="form-control" ng-model="formData.shippingAddress" id="shippgingAddress" placeholder="Enter the Address for Delivery" required=""></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="city" class="col-sm-2 control-label">City</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" ng-model="formData.city" id="city" placeholder="City" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="region" class="col-sm-2 control-label">Region/Province</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" ng-model="formData.region" id="region" placeholder="Region/Province" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="country" class="col-sm-2 control-label">Country</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" ng-model="formData.country" id="country" placeholder="Country" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-sm-2 control-label">Phone Number</label>
+                    <div class="col-sm-5">
+                        <input type="tel" class="form-control" ng-model="formData.phone" id="phone" placeholder="Phone Number" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-5">
+                        <input type="email" class="form-control" ng-model="formData.email" id="email" placeholder="email@example.com" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="emailVerify" class="col-sm-2 control-label">Confirm Email</label>
+                    <div class="col-sm-5">
+                        <input type="email" class="form-control" ng-model="formData.emailConfirm" id="emailConfirm" placeholder="email@example.com" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-1">
+                        <i>*Please fill in all the fields to complete the order</i> 
+                    </div>
+                </div>
 
-        <button type="submit" class="btn btn-default" ng-click="submitOrder(checkoutData)">Checkout</button>
+                <button type="submit" class="btn btn-default" ng-click="submitOrder(checkoutData)" ng-disabled="form.$invalid">Checkout</button>
 
 
 
-    </form>
-    {{ProductCheckoutCtrl.formData}}
-    {{ngCart.totalCost}}
-
+            </form>
 
         <!-- Checkout Button -->
         <!-- <ngcart-checkout template-url="components/ngcart/checkout.html" options="paymentOptions" service="log" settings="{ url:'/checkout' }">Checkout</ngcart-checkout>

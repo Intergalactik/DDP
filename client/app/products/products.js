@@ -39,5 +39,10 @@ angular.module('meanshopApp')
 	  	url: '/checkout',
 	  	templateUrl: 'app/products/templates/product-checkout.html',
 	  	controller: 'ProductCheckoutCtrl'
+	  })
+	  .state('confirmation', {
+	  	url: '/checkout/confirm',
+	  	templateUrl: 'app/products/templates/product-checkout-confirmation.html',
+	  	controller: 'ProductCheckoutCtrl'
 	  });
   });

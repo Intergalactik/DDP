@@ -16,5 +16,10 @@ angular.module('meanshopApp')
       .state('about', {
       	url: '/about',
       	templateUrl: 'app/main/about.html'
+      })
+      .state('contactsubmit', {
+        url: '/contact/confirm',
+        templateUrl: 'app/main/templates/contactsubmit.html',
+        controller: 'ContactCtrl'
       });
   });

@@ -6,7 +6,7 @@ angular.module('meanshopApp')
     $scope.products = Products.query();
   })
 
-  .controller('ContactCtrl', function($scope, $http /*,$state*/) {
+  .controller('ContactCtrl', function($scope, $http, $state) {
   	 // $scope.postData = {};
 
     $scope.postMail = function (contact) {
@@ -23,7 +23,9 @@ angular.module('meanshopApp')
       $http.post('/api/contact', angular.copy(contact))
         .success(function(/*data*/) {
           // Show success message
+	  $state.go('contactsubmit');
           $scope.contact = {};
+          
         })
         .error(function(/*data*/) {
           // Show error message

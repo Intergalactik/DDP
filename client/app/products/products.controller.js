@@ -34,7 +34,7 @@ angular.module('meanshopApp')
   	};
   })
 
-  .controller('ProductNewCtrl', function($scope, $state, Products /*, $timeout*/) {
+  .controller('ProductNewCtrl', function($scope, $state, Products) {
   	$scope.product = {}; // create a new instance
   	$scope.addProduct = function(){
       return Products.save($scope.product).$promise.then(function (product) {
@@ -67,6 +67,8 @@ angular.module('meanshopApp')
 
     ngCart.setShipping(0.1);
 
+    $scope.totalItems = ngCart.getTotalItems();
+
     $scope.formData = {};
     $scope.productData = ngCart.toObject();
     $scope.checkoutData = angular.merge($scope.formData, $scope.productData);
@@ -84,13 +86,13 @@ angular.module('meanshopApp')
 
           $scope.formData = {};
           ngCart.empty(true);
-          $state.go('products');
+          $state.go('confirmation');
         })
         .error(function(/*data*/) {
           // Show error message
         });
-      } else { 
-        console.log('Please confirm your email!');
+      } else {
+        window.alert('Please confirm your email!');
         return;
       }
     
