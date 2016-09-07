@@ -74,7 +74,7 @@ angular.module('meanshopApp')
     $scope.checkoutData = angular.merge($scope.formData, $scope.productData);
 
     $scope.submitOrder = function(checkoutData) {
-      if($scope.formData.$invalid === true) {
+      if($scope.form.$invalid === true) {
       return;
     }
 

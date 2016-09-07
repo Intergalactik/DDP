@@ -18,18 +18,20 @@ angular.module('meanshopApp')
       
       // wrap all your input values in $scope.postData
       // $scope.postData = angular.copy(contact);
-
-
-      $http.post('/api/contact', angular.copy(contact))
+      else {
+        $http.post('/api/contact', angular.copy(contact))
         .success(function(/*data*/) {
           // Show success message
-	  $state.go('contactsubmit');
+    $state.go('contactsubmit');
           $scope.contact = {};
           
         })
         .error(function(/*data*/) {
           // Show error message
         });
+      }
+
+      
 
     };
 

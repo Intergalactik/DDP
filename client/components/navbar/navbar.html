@@ -9,11 +9,23 @@
       </button>
     </div>
     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+
+    <!-- search bar -->
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-btn"><i class="fa fa-search" aria-hidden="true"></i></span>
+            <input id="searchBox" type="text" class="form-control input-large" placeholder="Search" ng-model="searchTerm" ng-change="search()" ng-focus="redirect()">
+          </div>
+        </div>
+      </form>
+
+      
       <ul class="nav navbar-nav">
         <li ng-repeat="item in menu" ui-sref-active="active">
             <a ui-sref="{{item.state}}">{{item.title}}</a>
         </li>
-        <li ng-show="isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
+        <li ng-show="isAdmin()" ui-sref-active="active"><a ui-sref="admin">ADMIN</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -44,15 +56,7 @@
         </li>
       </ul>
 
-      <!-- search bar -->
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-btn"><i class="fa fa-search" aria-hidden="true"></i></span>
-            <input id="searchBox" type="text" class="form-control input-large" placeholder="Search" ng-model="searchTerm" ng-change="search()" ng-focus="redirect()">
-          </div>
-        </div>
-      </form>
+      
 
     </div>
   </div>
