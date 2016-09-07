@@ -6,7 +6,8 @@ angular.module('meanshopApp')
       .state('login', {
         url: '/login',
         templateUrl: 'app/account/login/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        authenticate: false
       })
       .state('logout', {
         url: '/logout?referrer',

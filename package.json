@@ -28,11 +28,12 @@
     "nodemailer": "^2.4.2",
     "nodemailer-mailgun-transport": "git+https://github.com/orliesaurus/nodemailer-mailgun-transport.git",
     "nodemailer-smtp-transport": "^2.5.0",
+    "nodemailer-wellknown": "^0.1.10",
     "passport": "~0.2.0",
     "passport-local": "~0.1.6",
     "serve-favicon": "~2.0.1",
     "socket.io": "^1.3.5",
-    "socket.io-client": "^1.3.5",
+    "socket.io-client": "^1.4.6",
     "socketio-jwt": "^4.2.0"
   },
   "devDependencies": {

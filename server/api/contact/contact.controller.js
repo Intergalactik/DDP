@@ -11,35 +11,21 @@
 
 var nodemailer = require('nodemailer');
 
-var transporter = nodemailer.createTransport({
-  service: 'Gmail',
-  auth: {
-    user: 'eduard.nistru@gmail.com',    // your email here
-    pass: 'intergalactik2@!$'          // your password here
+var auth = {
+  mail: {
+    host: 'smtp.zoho.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'admin@depica.ro',
+      pass: 'admin@!$'
+    }
   }
-});
+};
 
 
-// var auth = {
-//   auth: {
-//     api_key: 'key-56b0dcc70e931b67dceed300d35d8881',
-//     domain: 'sandbox54280b478fe1402a94b71dc1e59c37b9.mailgun.org'
-//   }
-// };
 
-// var transporter = nodemailer.createTransport(mg(auth)
-// {
-
-
-  // service: 'Mailgun',
-  // auth: {
-  //   domain: 'sandbox54280b478fe1402a94b71dc1e59c37b9.mailgun.org',
-  //   api_key: 'key-56b0dcc70e931b67dceed300d35d8881',
-    // user: 'postmaster@sandbox54280b478fe1402a94b71dc1e59c37b9.mailgun.org',    // your email here
-    // pass: '00daff8b754083f6e1db73e8c137cde7'          // your password here
-  // }
-// }
-// );
+var transporter = nodemailer.createTransport(auth.mail);
 
 
 exports.send = function(req,res){
@@ -47,7 +33,7 @@ exports.send = function(req,res){
                     '<p>Email: ' + req.body.email + '</p>' +
                     '<p>Message: ' + req.body.message + '</p>';
   var mailOptions = {
-    to: 'eddy.nistru@gmail.com',                  // your email here
+    to: 'hello@depica.ro',                  // your email here
     subject: req.body.subject,
     from: req.body.name + ' <' + req.body.email + '>',
     sender: req.body.email,
@@ -55,7 +41,7 @@ exports.send = function(req,res){
   };
   transporter.sendMail(mailOptions, function(err, info){
     if (err) {
-      console.log(err);
+      console.log('Failed to send email: ', err);
     }else{
       console.log('Message sent: ' + info.response);
       return res.status(201).json(info);

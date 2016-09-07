@@ -1,0 +1,39 @@
+.thing-form {
+  margin: 20px 0; }
+
+#banner {
+  border-bottom: none;
+  margin-top: -20px; }
+
+#banner h1 {
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px; }
+
+.hero-unit {
+  position: relative;
+  padding: 30px 15px;
+  color: #000;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  background: #fff; }
+
+.navbar-text {
+  margin-left: 15px; }
+
+#contact {
+  padding-top: 100px; }
+
+.contact {
+  text-align: center; }
+
+.contact a {
+  display: inline-block;
+  color: #333333;
+  padding: 10px 50px; }
+
+.contact a:hover {
+  text-decoration: none;
+  color: #999999; }
+
+/*# sourceMappingURL=main.css.map */

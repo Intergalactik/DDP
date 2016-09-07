@@ -12,7 +12,8 @@ angular.module('meanshopApp')
       .state('newProduct', {
 		url: '/products/new',
 		templateUrl: 'app/products/templates/product-new.html',
-		controller: 'ProductNewCtrl'
+		controller: 'ProductNewCtrl',
+		authenticate: true
 	  })
 
 	  .state('viewProduct', {
@@ -24,7 +25,8 @@ angular.module('meanshopApp')
 	  .state('editProduct', {
 		url: '/products/:id/edit',
 		templateUrl: 'app/products/templates/product-edit.html',
-		controller: 'ProductEditCtrl'
+		controller: 'ProductEditCtrl',
+		authenticate: true
 	 })
 
 	  .state('productCatalog', {
@@ -36,6 +38,11 @@ angular.module('meanshopApp')
 	  .state('checkout', {
 	  	url: '/checkout',
 	  	templateUrl: 'app/products/templates/product-checkout.html',
+	  	controller: 'ProductCheckoutCtrl'
+	  })
+	  .state('confirmation', {
+	  	url: '/checkout/confirm',
+	  	templateUrl: 'app/products/templates/product-checkout-confirmation.html',
 	  	controller: 'ProductCheckoutCtrl'
 	  });
   });

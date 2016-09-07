@@ -32,34 +32,34 @@ var OrderSchema = new Schema({
 
 	// payment info
 	status: { type: String, default: 'pending' }, // pending, paid/ failed, delivered, canceled, refunded.
-	paymentType: { type: String, default: 'braintree' },
-	paymentStatus: Schema.Types.Mixed,
+	// paymentType: { type: String, default: 'braintree' },
+	// paymentStatus: Schema.Types.Mixed,
 	nonce: String,
 	type: String
 });
 
-OrderSchema.pre('validate', function(next) {
-	if(!this.nonce) {
-		next();
-	}
-	executePayment(this, function(err, result) {
-		this.paymentStatus = result;
-		if(err || !result.success) {
-			this.status = 'failed. ' + result.errors + err;
-			next(err || result.errors);
-		} else {
-			this.status = 'paid';
-			next();
-		}
-	}.bind(this));
-});
+// OrderSchema.pre('validate', function(next) {
+// 	if(!this.nonce) {
+// 		next();
+// 	};
+// 	executePayment(this, function(err, result) {
+// 		this.paymentStatus = result;
+// 		if(err || !result.success) {
+// 			this.status = 'failed. ' + result.errors + err;
+// 			next(err || result.errors);
+// 		} else {
+// 			this.status = 'paid';
+// 			next();
+// 		}
+// 	}.bind(this));
+// });
 
-function executePayment(payment, cb) {
-	Braintree.transaction.sale({
-		amount: payment.total,
-		paymentMethodNonce: payment.nonce,
-	}, cb);
-}
+// function executePayment(payment, cb) {
+// 	Braintree.transaction.sale({
+// 		amount: payment.total,
+// 		paymentMethodNonce: payment.nonce,
+// 	}, cb);
+// }
 
 function getPrice(num) {
 	return (num/100).toFixed(2);
